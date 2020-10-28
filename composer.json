@@ -9,12 +9,16 @@
     "license": "MIT",
     "require": {
         "php": "^7.3",
+        "babenkoivan/scout-elasticsearch-driver": "^4.2",
         "dcat/laravel-admin": "^1.7",
+        "elasticsearch/elasticsearch": "v7.2.1",
+        "fabpot/goutte": "^4.0",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.0",
-        "laravel/tinker": "^2.0"
+        "laravel/tinker": "^2.0",
+        "monolog/monolog": "^2.1"
     },
     "require-dev": {
         "facade/ignition": "^2.3.6",

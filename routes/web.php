@@ -16,3 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::namespace("\App\Http\Controllers")->group(function ($route) {
+    $route->get('/search', "PostController@search");
+    $route->get('/test', "PostController@test");
+});
+
