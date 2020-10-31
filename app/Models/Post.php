@@ -5,9 +5,8 @@ namespace App\Models;
 use App\PostsIndexConfigurator;
 use ScoutElastic\Searchable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model
+class Post extends BaseMode
 {
     use HasFactory;
     use Searchable;

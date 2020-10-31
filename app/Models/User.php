@@ -12,6 +12,17 @@ class User extends Authenticatable implements MustVerifyEmailContract
 {
     use HasFactory, Notifiable, MustVerifyEmailTrait;
 
+    // 需要上传的字段，会替换字段值为上传后的url
+    public $uploadColumn = ['avatar'];
+
+    public $cutColumn = ['avatar'];
+
+    public static function boot()
+    {
+        parent::boot();
+        self::saving(BaseMode::savingCallBack());
+    }
+
     /**
      * The attributes that are mass assignable.
      *
@@ -21,6 +32,9 @@ class User extends Authenticatable implements MustVerifyEmailContract
         'name',
         'email',
         'password',
+        'introduction',
+        'avatar',
+        'phone',
     ];
 
     /**
