@@ -18,7 +18,8 @@
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.0",
         "laravel/tinker": "^2.0",
-        "monolog/monolog": "^2.1"
+        "monolog/monolog": "^2.1",
+        "overtrue/laravel-lang": "~3.0"
     },
     "require-dev": {
         "facade/ignition": "^2.3.6",

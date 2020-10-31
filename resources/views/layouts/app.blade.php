@@ -34,7 +34,6 @@
 <!-- Scripts -->
 <script src="{{ mix('js/app.js') }}"></script>
 
-
 <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -57,7 +56,6 @@
     </div>
 </div>
 
-<div style="width: 200px;height: 2000px;background: greenyellow">ss</div>
 <!-- Scripts -->
 <script src="http://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 <script src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

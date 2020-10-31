@@ -23,3 +23,5 @@ Route::namespace("\App\Http\Controllers")->group(function ($route) {
     $route->get('/', 'PagesController@root')->name('root');
 });
 
+
+Auth::routes();
