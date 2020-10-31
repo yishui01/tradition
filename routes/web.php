@@ -27,5 +27,7 @@ Auth::routes(["verify" => true]); //不加verify不会注册 email/verify等路�
 
 Route::resource('users', 'UsersController', ['only' => ['show', 'update', 'edit']]);
 
+Route::resource('posts', 'PostsController',
+    ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
 
-Route::resource('posts', 'PostsController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
+Route::resource('categories', 'CategoriesController', ['only' => ['show']]);

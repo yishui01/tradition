@@ -5,6 +5,7 @@
 /public/vendor
 /public/vendors
 /storage/*.key
+/storage/debugbar
 /vendor
 .env
 .idea
