@@ -23,5 +23,5 @@ Route::namespace("\App\Http\Controllers")->group(function ($route) {
     $route->get('/', 'PagesController@root')->name('root');
 });
 
-
-Auth::routes();
+// vendor/laravel/ui/src/AuthRouteMethods.php
+Auth::routes(["verify" => true]); //不加verify不会注册 email/verify等路由
