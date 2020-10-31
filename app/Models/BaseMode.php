@@ -4,11 +4,11 @@ namespace App\Models;
 
 use App\Services\ImageService;
 use App\Services\UploadService;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Database\Eloquent\Model as EloquentModel;
 
-class BaseMode extends Model
+class BaseMode extends EloquentModel
 {
 
     public static function boot()
@@ -28,7 +28,7 @@ class BaseMode extends Model
             $uploadColumn = $model->uploadColumn ?? [];
             $cutColumn = $model->cutColumn ?? [];
             foreach ($model->getAttributes() as $k => $v) {
-                if (in_array($k, $uploadColumn)) {
+                if (in_array($k, $uploadColumn) && $v instanceof UploadedFile) {
                     // 需要上传
                     $file = $v;
                     if (in_array($k, $cutColumn)) {
@@ -40,5 +40,15 @@ class BaseMode extends Model
                 }
             };
         };
+    }
+
+    public function scopeRecent($query)
+    {
+        return $query->orderBy('id', 'desc');
+    }
+
+    public function scopeOrdered($query)
+    {
+        return $query->orderBy('order', 'desc');
     }
 }

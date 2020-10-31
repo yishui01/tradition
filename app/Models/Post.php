@@ -8,8 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Post extends BaseMode
 {
-    use HasFactory;
-    use Searchable;
+    use HasFactory, Searchable;
 
     protected $indexConfigurator = PostsIndexConfigurator::class;
 
