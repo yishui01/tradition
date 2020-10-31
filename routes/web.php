@@ -20,5 +20,6 @@ Route::get('/', function () {
 Route::namespace("\App\Http\Controllers")->group(function ($route) {
     $route->get('/search', "PostController@search");
     $route->get('/test', "PostController@test");
+    $route->get('/', 'PagesController@root')->name('root');
 });
 
