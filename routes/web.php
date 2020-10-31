@@ -17,11 +17,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::namespace("\App\Http\Controllers")->group(function ($route) {
-    $route->get('/search', "PostController@search");
-    $route->get('/test', "PostController@test");
-    $route->get('/', 'PagesController@root')->name('root');
-});
+// 已经在 RouteServiceProvider 中注册默认namespace为 \App\Http\Controllers
+Route::get('/search', "PostController@search");
+Route::get('/test', "PostController@test");
+Route::get('/', 'PagesController@root')->name('root');
 
 // vendor/laravel/ui/src/AuthRouteMethods.php
 Auth::routes(["verify" => true]); //不加verify不会注册 email/verify等路由
+
+Route::resource('users', 'UsersController', ['only' => ['show', 'update', 'edit']]);
+
