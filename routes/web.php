@@ -13,14 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 // 已经在 RouteServiceProvider 中注册默认namespace为 \App\Http\Controllers
 Route::get('/search', "PostController@search");
 Route::get('/test', "PostController@test");
-Route::get('/', 'PagesController@root')->name('root');
+Route::get('/', 'PostsController@index')->name('root');
 
 // vendor/laravel/ui/src/AuthRouteMethods.php
 Auth::routes(["verify" => true]); //不加verify不会注册 email/verify等路由

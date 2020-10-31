@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Http\Requests\PostRequest;
 
 class PostsController extends Controller
@@ -14,9 +14,14 @@ class PostsController extends Controller
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $posts = Post::with('user', 'category')->paginate(15);
+        /** @var Model $posts */
+        $posts = Post::withOrder($request->order)->with("user", "category");
+        if ($request->cate) {
+            $posts = $posts->where('category_id', $request->cate);
+        }
+        $posts = $posts->paginate(15);
         return view('posts.index', compact('posts'));
     }
 

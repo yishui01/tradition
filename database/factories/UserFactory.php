@@ -24,12 +24,10 @@ class UserFactory extends Factory
     {
         // 头像假数据
         $avatars = [
-            'https://cdn.learnku.com/uploads/images/201710/14/1/s5ehp11z6s.png',
-            'https://cdn.learnku.com/uploads/images/201710/14/1/Lhd1SHqu86.png',
-            'https://cdn.learnku.com/uploads/images/201710/14/1/LOnMrqbHJn.png',
-            'https://cdn.learnku.com/uploads/images/201710/14/1/xAuDMxteQy.png',
-            'https://cdn.learnku.com/uploads/images/201710/14/1/ZqM7iaP4CR.png',
-            'https://cdn.learnku.com/uploads/images/201710/14/1/NDnzMutoxX.png',
+            'https://file.wuxxin.com/tradition/x2.jpg',
+            'https://file.wuxxin.com/tradition/x3.jpg',
+            'https://file.wuxxin.com/tradition/m1.jpg',
+            'https://file.wuxxin.com/tradition/l1.jpg',
         ];
 
         $faker = $this->faker;
