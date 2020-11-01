@@ -50,12 +50,15 @@ class Post extends BaseMode
 
     public function category()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class)->withDefault();
     }
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class)->withDefault(function ($user) {
+            $user->name = '游客';
+            $user->avatar = 'https://file.wuxxin.com/tradition/l1.jpg';
+        });
     }
 
     /**
