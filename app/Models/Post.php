@@ -17,6 +17,16 @@ class Post extends BaseMode
         //
     ];
 
+    public static function savingCallBack()
+    {
+        return function ($model) {
+            if (!$model->excerpt) {
+                $model->excerpt = make_excerpt($model->content);
+            }
+            parent::savingCallBack()($model);
+        };
+    }
+
     protected $casts = [
         'created_at' => 'datetime:Y-m-d H:i:s',
         'updated_at' => 'datetime:Y-m-d H:i:s',
@@ -30,7 +40,6 @@ class Post extends BaseMode
         'author',
         'content',
         'post_date',
-        'user_id',
         'category_id',
         'reply_count',
         'view_count',

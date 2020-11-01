@@ -6,7 +6,6 @@
 
     <div class="row mb-5">
         <div class="col-lg-9 col-md-9 post-list">
-
             @if (count($posts) > 0 && $category = $posts[0]->category)
                 <div class="alert alert-info" role="alert">
                     {{ $category->title }} ：{{ $category->introduction }}

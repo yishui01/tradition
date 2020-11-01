@@ -4,8 +4,8 @@ namespace App\Models;
 
 use App\Services\ImageService;
 use App\Services\UploadService;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Model as EloquentModel;
 
 class BaseMode extends EloquentModel
@@ -14,7 +14,7 @@ class BaseMode extends EloquentModel
     public static function boot()
     {
         parent::boot();
-        self::saving(self::savingCallBack());
+        self::saving(static::savingCallBack());
     }
 
     /**

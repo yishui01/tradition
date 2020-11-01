@@ -30,6 +30,11 @@
                     <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">登录</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">注册</a></li>
                 @else
+                    <li class="nav-item">
+                        <a class="nav-link mt-1 mr-3 font-weight-bold" href="{{ route('posts.create') }}">
+                            <i class="fa fa-plus"></i> 新建话题
+                        </a>
+                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
