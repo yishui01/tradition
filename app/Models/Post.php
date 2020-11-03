@@ -20,6 +20,7 @@ class Post extends BaseMode
     public static function savingCallBack()
     {
         return function ($model) {
+            $model->content = clean($model->content); // 过滤有威胁的html标签，防止XSS
             if (!$model->excerpt) {
                 $model->excerpt = make_excerpt($model->content);
             }

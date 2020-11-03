@@ -40,7 +40,6 @@ class PostsController extends Controller
 
     public function store(PostRequest $request, Post $post)
     {
-
         $post->fill($request->all());
         $post->user_id = Auth::id();
         $post->save();
@@ -57,16 +56,28 @@ class PostsController extends Controller
     public function update(PostRequest $request, Post $post)
     {
         $this->authorize('update', $post);
-        $post->update($request->all());
-
+        $post->fill($request->all());
+        $post->save();
         return redirect()->route('posts.show', $post->id)->with('message', 'Updated successfully.');
     }
 
     public function destroy(Post $post)
     {
-        $this->authorize('destroy', $post);
+        $this->authorize('update', $post);
         $post->delete();
 
         return redirect()->route('posts.index')->with('message', 'Deleted successfully.');
     }
+
+    public function search(Request $request)
+    {
+        $q = $request->get('q');
+        $paginator = [];
+        if ($q) {
+            $paginator = Post::search($q)->paginate();
+        }
+
+        return view('search', compact('paginator', 'q'));
+    }
+
 }
