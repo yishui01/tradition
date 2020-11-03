@@ -11,22 +11,18 @@ namespace Dcat\Admin {
     use Illuminate\Support\Collection;
 
     /**
-     * @property Grid\Column|Collection name
-     * @property Grid\Column|Collection version
-     * @property Grid\Column|Collection alias
-     * @property Grid\Column|Collection authors
-     * @property Grid\Column|Collection enable
-     * @property Grid\Column|Collection imported
-     * @property Grid\Column|Collection config
-     * @property Grid\Column|Collection require
-     * @property Grid\Column|Collection require_dev
      * @property Grid\Column|Collection id
+     * @property Grid\Column|Collection name
+     * @property Grid\Column|Collection type
+     * @property Grid\Column|Collection version
+     * @property Grid\Column|Collection detail
+     * @property Grid\Column|Collection created_at
+     * @property Grid\Column|Collection updated_at
+     * @property Grid\Column|Collection is_enabled
      * @property Grid\Column|Collection parent_id
      * @property Grid\Column|Collection order
      * @property Grid\Column|Collection icon
      * @property Grid\Column|Collection uri
-     * @property Grid\Column|Collection created_at
-     * @property Grid\Column|Collection updated_at
      * @property Grid\Column|Collection user_id
      * @property Grid\Column|Collection path
      * @property Grid\Column|Collection method
@@ -38,12 +34,13 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection http_method
      * @property Grid\Column|Collection http_path
      * @property Grid\Column|Collection role_id
+     * @property Grid\Column|Collection value
      * @property Grid\Column|Collection username
      * @property Grid\Column|Collection password
      * @property Grid\Column|Collection avatar
      * @property Grid\Column|Collection remember_token
-     * @property Grid\Column|Collection code
-     * @property Grid\Column|Collection population
+     * @property Grid\Column|Collection introduction
+     * @property Grid\Column|Collection uuid
      * @property Grid\Column|Collection connection
      * @property Grid\Column|Collection queue
      * @property Grid\Column|Collection payload
@@ -51,28 +48,43 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection failed_at
      * @property Grid\Column|Collection email
      * @property Grid\Column|Collection token
-     * @property Grid\Column|Collection age
-     * @property Grid\Column|Collection is_del
-     * @property Grid\Column|Collection deleted_at
-     * @property Grid\Column|Collection gender
+     * @property Grid\Column|Collection url
+     * @property Grid\Column|Collection author
+     * @property Grid\Column|Collection content
+     * @property Grid\Column|Collection post_date
+     * @property Grid\Column|Collection category_id
+     * @property Grid\Column|Collection reply_count
+     * @property Grid\Column|Collection view_count
+     * @property Grid\Column|Collection nice_count
+     * @property Grid\Column|Collection last_reply_user_id
+     * @property Grid\Column|Collection excerpt
+     * @property Grid\Column|Collection m1
+     * @property Grid\Column|Collection n1
+     * @property Grid\Column|Collection m2
+     * @property Grid\Column|Collection n2
      * @property Grid\Column|Collection email_verified_at
+     * @property Grid\Column|Collection phone
+     * @property Grid\Column|Collection click
+     * @property Grid\Column|Collection wx_openid
+     * @property Grid\Column|Collection wx_pc_openid
+     * @property Grid\Column|Collection wx_union_id
+     * @property Grid\Column|Collection wx_info
+     * @property Grid\Column|Collection last_actived_at
+     * @property Grid\Column|Collection fans_count
+     * @property Grid\Column|Collection follow_count
      *
-     * @method Grid\Column|Collection name(string $label = null)
-     * @method Grid\Column|Collection version(string $label = null)
-     * @method Grid\Column|Collection alias(string $label = null)
-     * @method Grid\Column|Collection authors(string $label = null)
-     * @method Grid\Column|Collection enable(string $label = null)
-     * @method Grid\Column|Collection imported(string $label = null)
-     * @method Grid\Column|Collection config(string $label = null)
-     * @method Grid\Column|Collection require(string $label = null)
-     * @method Grid\Column|Collection require_dev(string $label = null)
      * @method Grid\Column|Collection id(string $label = null)
+     * @method Grid\Column|Collection name(string $label = null)
+     * @method Grid\Column|Collection type(string $label = null)
+     * @method Grid\Column|Collection version(string $label = null)
+     * @method Grid\Column|Collection detail(string $label = null)
+     * @method Grid\Column|Collection created_at(string $label = null)
+     * @method Grid\Column|Collection updated_at(string $label = null)
+     * @method Grid\Column|Collection is_enabled(string $label = null)
      * @method Grid\Column|Collection parent_id(string $label = null)
      * @method Grid\Column|Collection order(string $label = null)
      * @method Grid\Column|Collection icon(string $label = null)
      * @method Grid\Column|Collection uri(string $label = null)
-     * @method Grid\Column|Collection created_at(string $label = null)
-     * @method Grid\Column|Collection updated_at(string $label = null)
      * @method Grid\Column|Collection user_id(string $label = null)
      * @method Grid\Column|Collection path(string $label = null)
      * @method Grid\Column|Collection method(string $label = null)
@@ -84,12 +96,13 @@ namespace Dcat\Admin {
      * @method Grid\Column|Collection http_method(string $label = null)
      * @method Grid\Column|Collection http_path(string $label = null)
      * @method Grid\Column|Collection role_id(string $label = null)
+     * @method Grid\Column|Collection value(string $label = null)
      * @method Grid\Column|Collection username(string $label = null)
      * @method Grid\Column|Collection password(string $label = null)
      * @method Grid\Column|Collection avatar(string $label = null)
      * @method Grid\Column|Collection remember_token(string $label = null)
-     * @method Grid\Column|Collection code(string $label = null)
-     * @method Grid\Column|Collection population(string $label = null)
+     * @method Grid\Column|Collection introduction(string $label = null)
+     * @method Grid\Column|Collection uuid(string $label = null)
      * @method Grid\Column|Collection connection(string $label = null)
      * @method Grid\Column|Collection queue(string $label = null)
      * @method Grid\Column|Collection payload(string $label = null)
@@ -97,33 +110,48 @@ namespace Dcat\Admin {
      * @method Grid\Column|Collection failed_at(string $label = null)
      * @method Grid\Column|Collection email(string $label = null)
      * @method Grid\Column|Collection token(string $label = null)
-     * @method Grid\Column|Collection age(string $label = null)
-     * @method Grid\Column|Collection is_del(string $label = null)
-     * @method Grid\Column|Collection deleted_at(string $label = null)
-     * @method Grid\Column|Collection gender(string $label = null)
+     * @method Grid\Column|Collection url(string $label = null)
+     * @method Grid\Column|Collection author(string $label = null)
+     * @method Grid\Column|Collection content(string $label = null)
+     * @method Grid\Column|Collection post_date(string $label = null)
+     * @method Grid\Column|Collection category_id(string $label = null)
+     * @method Grid\Column|Collection reply_count(string $label = null)
+     * @method Grid\Column|Collection view_count(string $label = null)
+     * @method Grid\Column|Collection nice_count(string $label = null)
+     * @method Grid\Column|Collection last_reply_user_id(string $label = null)
+     * @method Grid\Column|Collection excerpt(string $label = null)
+     * @method Grid\Column|Collection m1(string $label = null)
+     * @method Grid\Column|Collection n1(string $label = null)
+     * @method Grid\Column|Collection m2(string $label = null)
+     * @method Grid\Column|Collection n2(string $label = null)
      * @method Grid\Column|Collection email_verified_at(string $label = null)
+     * @method Grid\Column|Collection phone(string $label = null)
+     * @method Grid\Column|Collection click(string $label = null)
+     * @method Grid\Column|Collection wx_openid(string $label = null)
+     * @method Grid\Column|Collection wx_pc_openid(string $label = null)
+     * @method Grid\Column|Collection wx_union_id(string $label = null)
+     * @method Grid\Column|Collection wx_info(string $label = null)
+     * @method Grid\Column|Collection last_actived_at(string $label = null)
+     * @method Grid\Column|Collection fans_count(string $label = null)
+     * @method Grid\Column|Collection follow_count(string $label = null)
      */
     class Grid {}
 
     class MiniGrid extends Grid {}
 
     /**
-     * @property Show\Field|Collection name
-     * @property Show\Field|Collection version
-     * @property Show\Field|Collection alias
-     * @property Show\Field|Collection authors
-     * @property Show\Field|Collection enable
-     * @property Show\Field|Collection imported
-     * @property Show\Field|Collection config
-     * @property Show\Field|Collection require
-     * @property Show\Field|Collection require_dev
      * @property Show\Field|Collection id
+     * @property Show\Field|Collection name
+     * @property Show\Field|Collection type
+     * @property Show\Field|Collection version
+     * @property Show\Field|Collection detail
+     * @property Show\Field|Collection created_at
+     * @property Show\Field|Collection updated_at
+     * @property Show\Field|Collection is_enabled
      * @property Show\Field|Collection parent_id
      * @property Show\Field|Collection order
      * @property Show\Field|Collection icon
      * @property Show\Field|Collection uri
-     * @property Show\Field|Collection created_at
-     * @property Show\Field|Collection updated_at
      * @property Show\Field|Collection user_id
      * @property Show\Field|Collection path
      * @property Show\Field|Collection method
@@ -135,12 +163,13 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection http_method
      * @property Show\Field|Collection http_path
      * @property Show\Field|Collection role_id
+     * @property Show\Field|Collection value
      * @property Show\Field|Collection username
      * @property Show\Field|Collection password
      * @property Show\Field|Collection avatar
      * @property Show\Field|Collection remember_token
-     * @property Show\Field|Collection code
-     * @property Show\Field|Collection population
+     * @property Show\Field|Collection introduction
+     * @property Show\Field|Collection uuid
      * @property Show\Field|Collection connection
      * @property Show\Field|Collection queue
      * @property Show\Field|Collection payload
@@ -148,28 +177,43 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection failed_at
      * @property Show\Field|Collection email
      * @property Show\Field|Collection token
-     * @property Show\Field|Collection age
-     * @property Show\Field|Collection is_del
-     * @property Show\Field|Collection deleted_at
-     * @property Show\Field|Collection gender
+     * @property Show\Field|Collection url
+     * @property Show\Field|Collection author
+     * @property Show\Field|Collection content
+     * @property Show\Field|Collection post_date
+     * @property Show\Field|Collection category_id
+     * @property Show\Field|Collection reply_count
+     * @property Show\Field|Collection view_count
+     * @property Show\Field|Collection nice_count
+     * @property Show\Field|Collection last_reply_user_id
+     * @property Show\Field|Collection excerpt
+     * @property Show\Field|Collection m1
+     * @property Show\Field|Collection n1
+     * @property Show\Field|Collection m2
+     * @property Show\Field|Collection n2
      * @property Show\Field|Collection email_verified_at
+     * @property Show\Field|Collection phone
+     * @property Show\Field|Collection click
+     * @property Show\Field|Collection wx_openid
+     * @property Show\Field|Collection wx_pc_openid
+     * @property Show\Field|Collection wx_union_id
+     * @property Show\Field|Collection wx_info
+     * @property Show\Field|Collection last_actived_at
+     * @property Show\Field|Collection fans_count
+     * @property Show\Field|Collection follow_count
      *
-     * @method Show\Field|Collection name(string $label = null)
-     * @method Show\Field|Collection version(string $label = null)
-     * @method Show\Field|Collection alias(string $label = null)
-     * @method Show\Field|Collection authors(string $label = null)
-     * @method Show\Field|Collection enable(string $label = null)
-     * @method Show\Field|Collection imported(string $label = null)
-     * @method Show\Field|Collection config(string $label = null)
-     * @method Show\Field|Collection require(string $label = null)
-     * @method Show\Field|Collection require_dev(string $label = null)
      * @method Show\Field|Collection id(string $label = null)
+     * @method Show\Field|Collection name(string $label = null)
+     * @method Show\Field|Collection type(string $label = null)
+     * @method Show\Field|Collection version(string $label = null)
+     * @method Show\Field|Collection detail(string $label = null)
+     * @method Show\Field|Collection created_at(string $label = null)
+     * @method Show\Field|Collection updated_at(string $label = null)
+     * @method Show\Field|Collection is_enabled(string $label = null)
      * @method Show\Field|Collection parent_id(string $label = null)
      * @method Show\Field|Collection order(string $label = null)
      * @method Show\Field|Collection icon(string $label = null)
      * @method Show\Field|Collection uri(string $label = null)
-     * @method Show\Field|Collection created_at(string $label = null)
-     * @method Show\Field|Collection updated_at(string $label = null)
      * @method Show\Field|Collection user_id(string $label = null)
      * @method Show\Field|Collection path(string $label = null)
      * @method Show\Field|Collection method(string $label = null)
@@ -181,12 +225,13 @@ namespace Dcat\Admin {
      * @method Show\Field|Collection http_method(string $label = null)
      * @method Show\Field|Collection http_path(string $label = null)
      * @method Show\Field|Collection role_id(string $label = null)
+     * @method Show\Field|Collection value(string $label = null)
      * @method Show\Field|Collection username(string $label = null)
      * @method Show\Field|Collection password(string $label = null)
      * @method Show\Field|Collection avatar(string $label = null)
      * @method Show\Field|Collection remember_token(string $label = null)
-     * @method Show\Field|Collection code(string $label = null)
-     * @method Show\Field|Collection population(string $label = null)
+     * @method Show\Field|Collection introduction(string $label = null)
+     * @method Show\Field|Collection uuid(string $label = null)
      * @method Show\Field|Collection connection(string $label = null)
      * @method Show\Field|Collection queue(string $label = null)
      * @method Show\Field|Collection payload(string $label = null)
@@ -194,11 +239,30 @@ namespace Dcat\Admin {
      * @method Show\Field|Collection failed_at(string $label = null)
      * @method Show\Field|Collection email(string $label = null)
      * @method Show\Field|Collection token(string $label = null)
-     * @method Show\Field|Collection age(string $label = null)
-     * @method Show\Field|Collection is_del(string $label = null)
-     * @method Show\Field|Collection deleted_at(string $label = null)
-     * @method Show\Field|Collection gender(string $label = null)
+     * @method Show\Field|Collection url(string $label = null)
+     * @method Show\Field|Collection author(string $label = null)
+     * @method Show\Field|Collection content(string $label = null)
+     * @method Show\Field|Collection post_date(string $label = null)
+     * @method Show\Field|Collection category_id(string $label = null)
+     * @method Show\Field|Collection reply_count(string $label = null)
+     * @method Show\Field|Collection view_count(string $label = null)
+     * @method Show\Field|Collection nice_count(string $label = null)
+     * @method Show\Field|Collection last_reply_user_id(string $label = null)
+     * @method Show\Field|Collection excerpt(string $label = null)
+     * @method Show\Field|Collection m1(string $label = null)
+     * @method Show\Field|Collection n1(string $label = null)
+     * @method Show\Field|Collection m2(string $label = null)
+     * @method Show\Field|Collection n2(string $label = null)
      * @method Show\Field|Collection email_verified_at(string $label = null)
+     * @method Show\Field|Collection phone(string $label = null)
+     * @method Show\Field|Collection click(string $label = null)
+     * @method Show\Field|Collection wx_openid(string $label = null)
+     * @method Show\Field|Collection wx_pc_openid(string $label = null)
+     * @method Show\Field|Collection wx_union_id(string $label = null)
+     * @method Show\Field|Collection wx_info(string $label = null)
+     * @method Show\Field|Collection last_actived_at(string $label = null)
+     * @method Show\Field|Collection fans_count(string $label = null)
+     * @method Show\Field|Collection follow_count(string $label = null)
      */
     class Show {}
 
