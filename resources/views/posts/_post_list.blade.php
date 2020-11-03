@@ -11,10 +11,10 @@
                 <div class="media-body">
 
                     <div class="media-heading mt-0 mb-1">
-                        <a href="{{ route('posts.show', [$post->id]) }}" title="{{ $post->title }}">
+                        <a href="{{ $post->link() }}" title="{{ $post->title }}">
                             {{ $post->title }}
                         </a>
-                        <a class="float-right" href="{{ route('posts.show', [$post->id]) }}">
+                        <a class="float-right" href="{{ $post->link() }}">
                             <span class="badge badge-secondary badge-pill"> {{ $post->reply_count }} </span>
                         </a>
                     </div>

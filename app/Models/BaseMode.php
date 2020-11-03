@@ -15,6 +15,7 @@ class BaseMode extends EloquentModel
     {
         parent::boot();
         self::saving(static::savingCallBack());
+        self::saved(static::savedCallback());
     }
 
     /**
@@ -39,6 +40,14 @@ class BaseMode extends EloquentModel
                     unlink($file);
                 }
             };
+        };
+    }
+
+    public static function savedCallback()
+    {
+        /** @var  $model Model */
+        return function ($model) {
+
         };
     }
 

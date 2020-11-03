@@ -27,3 +27,5 @@ Route::resource('posts', 'PostsController',
     ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
 
 Route::resource('categories', 'CategoriesController', ['only' => ['show']]);
+
+Route::get('posts/{post}/{slug?}', 'PostsController@show')->name('posts.show');

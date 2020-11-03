@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use App\Jobs\TranslateSlug;
 use App\PostsIndexConfigurator;
+use App\Services\PostService;
 use Illuminate\Database\Query\Builder;
 use ScoutElastic\Searchable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -25,6 +27,16 @@ class Post extends BaseMode
                 $model->excerpt = make_excerpt($model->content);
             }
             parent::savingCallBack()($model);
+        };
+    }
+
+    public static function savedCallback()
+    {
+        return function ($model) {
+            if (!$model->slug) {
+                dispatch(new TranslateSlug($model));
+            }
+            parent::savedCallback()($model);
         };
     }
 
@@ -60,6 +72,11 @@ class Post extends BaseMode
             $user->name = '游客';
             $user->avatar = 'https://file.wuxxin.com/tradition/l1.jpg';
         });
+    }
+
+    public function link($params = [])
+    {
+        return route('posts.show', array_merge([$this->id, $this->slug], $params));
     }
 
     /**

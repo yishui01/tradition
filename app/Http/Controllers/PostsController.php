@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class PostsController extends Controller
 {
@@ -27,8 +28,12 @@ class PostsController extends Controller
         return view('posts.index', compact('posts'));
     }
 
-    public function show(Post $post)
+    public function show(Post $post, Request $request)
     {
+        // URL 矫正
+        if (!empty($post->slug) && $post->slug != $request->slug) {
+            return redirect($post->link(), 301);
+        }
         return view('posts.show', compact('post'));
     }
 
@@ -43,7 +48,7 @@ class PostsController extends Controller
         $post->fill($request->all());
         $post->user_id = Auth::id();
         $post->save();
-        return redirect()->route('posts.show', $post->id)->with('message', 'Created successfully.');
+        return redirect()->to($post->link())->with('message', 'Created successfully.');
     }
 
     public function edit(Post $post)
@@ -58,7 +63,7 @@ class PostsController extends Controller
         $this->authorize('update', $post);
         $post->fill($request->all());
         $post->save();
-        return redirect()->route('posts.show', $post->id)->with('message', 'Updated successfully.');
+        return redirect()->to($post->link())->with('message', 'Updated successfully.');
     }
 
     public function destroy(Post $post)
