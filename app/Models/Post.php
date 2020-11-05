@@ -74,6 +74,11 @@ class Post extends BaseMode
         });
     }
 
+    public function reply()
+    {
+        return $this->hasMany(Reply::class);
+    }
+
     public function link($params = [])
     {
         return route('posts.show', array_merge([$this->id, $this->slug], $params));
