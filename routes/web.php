@@ -29,3 +29,7 @@ Route::resource('posts', 'PostsController',
 Route::resource('categories', 'CategoriesController', ['only' => ['show']]);
 
 Route::get('posts/{post}/{slug?}', 'PostsController@show')->name('posts.show');
+
+//only 参数，值是 resources控制器 的 方法名, 即只能访问 指定的方法
+Route::resource('replies', 'RepliesController', ['only' => ['store', 'destroy']]);
+

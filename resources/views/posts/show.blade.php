@@ -65,6 +65,15 @@
 
                 </div>
             </div>
+
+            {{-- 用户回复列表 --}}
+            <div class="card post-reply mt-4">
+                <div class="card-body">
+                    @includeWhen(Auth::check(),'posts._reply_box', ['post' => $post])
+                    @include('posts._reply_list', ['replies' => $post->reply()->with('user')->get()])
+                </div>
+            </div>
+
         </div>
     </div>
 @stop

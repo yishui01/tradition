@@ -6,6 +6,7 @@ use App\Jobs\TranslateSlug;
 use App\PostsIndexConfigurator;
 use App\Services\PostService;
 use Illuminate\Database\Query\Builder;
+use Illuminate\Support\Facades\DB;
 use ScoutElastic\Searchable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -39,6 +40,17 @@ class Post extends BaseMode
             parent::savedCallback()($model);
         };
     }
+
+    public static function boot()
+    {
+        parent::boot();
+        self::deleted(function ($model) {
+            DB::table('replies')->where('post_id', $model->id)->update([
+                'deleted_at' => date('Y-m-d H:i:s', time())
+            ]);
+        });
+    }
+
 
     protected $casts = [
         'created_at' => 'datetime:Y-m-d H:i:s',
@@ -82,6 +94,15 @@ class Post extends BaseMode
     public function link($params = [])
     {
         return route('posts.show', array_merge([$this->id, $this->slug], $params));
+    }
+
+    public function updateReplyCount()
+    {
+        DB::transaction(function ($fail) {
+            $count = DB::table("replies")->where('post_id', $this->id)
+                ->where('deleted_at', null)->count();
+            DB::table("posts")->where('id', $this->id)->update(['reply_count' => $count]);
+        });
     }
 
     /**
