@@ -31,13 +31,6 @@ class Reply extends BaseMode
                 throw new UserInvalidException("请输入评论内容");
             }
             $model->content = $content;
-            return parent::savingCallBack()($model);
-        };
-    }
-
-    public static function savedCallback()
-    {
-        return function ($model) {
             // 构建path
             $path = '-' . $model->id . '-';
             if ($model->parent_id != 0) {
@@ -48,8 +41,14 @@ class Reply extends BaseMode
                     $path = '';
                 }
             }
-            DB::table("replies")->where('id', $model->id)->update(['path' => $path]);
+            $model->path = $path;
+            return parent::savingCallBack()($model);
+        };
+    }
 
+    public static function savedCallback()
+    {
+        return function ($model) {
             // 通知话题作者有新的评论
             /** @var User $postAuthor */
             $postAuthor = $model->post->user;

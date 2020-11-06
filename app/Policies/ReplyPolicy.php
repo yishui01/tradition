@@ -27,6 +27,6 @@ class ReplyPolicy
 
     public function destroy(User $user, Reply $reply)
     {
-        return $user->id == $reply->user_id || $user->id == $reply->topic->user_id;
+        return $user->id == $reply->user_id || $user->id == $reply->post->user_id;
     }
 }
