@@ -18,6 +18,7 @@ class User extends Authenticatable implements MustVerifyEmailContract
     // 需要上传的字段，会替换字段值为上传后的url
     public $uploadColumn = ['avatar'];
 
+    // 需要裁剪的图片字段
     public $cutColumn = ['avatar'];
 
     public static function boot()
@@ -26,11 +27,6 @@ class User extends Authenticatable implements MustVerifyEmailContract
         self::saving(BaseMode::savingCallBack());
     }
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
         'name',
         'email',
@@ -40,21 +36,11 @@ class User extends Authenticatable implements MustVerifyEmailContract
         'phone',
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
@@ -67,6 +53,14 @@ class User extends Authenticatable implements MustVerifyEmailContract
     public function reply()
     {
         return $this->hasMany(Reply::class);
+    }
+
+    public function getAvatarAttribute($value)
+    {
+        if (empty($value)) {
+            return "https://file.wuxxin.com/tradition/x2.jpg";
+        }
+        return $value;
     }
 
     /**
