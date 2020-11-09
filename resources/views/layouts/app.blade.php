@@ -47,7 +47,6 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <a class="navbar-brand" href="/">Laravel Scout Elastic Demo</a>
                         </div>
                     </div><!-- /.container-fluid -->
                 </nav>
