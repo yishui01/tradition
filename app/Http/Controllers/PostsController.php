@@ -14,7 +14,7 @@ class PostsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['index', 'show']]);
+        $this->middleware('auth', ['except' => ['index', 'show', 'search']]);
     }
 
     public function index(Request $request)
@@ -77,12 +77,13 @@ class PostsController extends Controller
     public function search(Request $request)
     {
         $q = $request->get('q');
-        $paginator = [];
+        $pageSize = 10;
         if ($q) {
-            $paginator = Post::search($q)->paginate();
+            $res = Post::search($q)->take($pageSize)->get();
+        } else {
+            $res = Post::take($pageSize)->get();
         }
-
-        return view('search', compact('paginator', 'q'));
+        return $res;
     }
 
 }

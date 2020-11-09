@@ -22,6 +22,15 @@
                         </a>
                     </li>
                 @endforeach
+                <li class="nav-item">
+                <form class="ui fluid category search item secondary hide-on-991" action="https://learnku.com/laravel/search" method="GET">
+                    <div class="ui icon input">
+                        <input class="prompt searchInput" name="q" type="text" placeholder="搜索" value="" autocomplete="off">
+                        <i class="fa fa-search icon"></i>
+                    </div>
+                    <div class="results"></div>
+                </form>
+                </li>
             </ul>
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav navbar-right">

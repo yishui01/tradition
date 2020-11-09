@@ -14,8 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 // 已经在 RouteServiceProvider 中注册默认namespace为 \App\Http\Controllers
-Route::get('/search', "PostController@search");
-Route::get('/test', "PostController@test");
+Route::get('/search', "PostsController@search");
 Route::get('/', 'PostsController@index')->name('root');
 
 // vendor/laravel/ui/src/AuthRouteMethods.php

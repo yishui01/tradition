@@ -37274,6 +37274,35 @@ module.exports = function(module) {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+$(function () {
+  /************** 头部搜索 ***************/
+  var searchTimer = false;
+  $(".searchInput").focus(function (v) {
+    $(this).parent().addClass("focus");
+  });
+  $(".searchInput").blur(function (v) {
+    $(this).parent().removeClass("focus");
+  });
+  $(".searchInput").on("input", function (v) {
+    var _this = this;
+
+    if (searchTimer) {
+      clearTimeout(searchTimer);
+      searchTimer = false;
+    }
+
+    searchTimer = setTimeout(function () {
+      $.ajax({
+        url: "/search?q=" + $(_this).val(),
+        method: "get",
+        success: function success(data) {
+          console.log(data);
+        }
+      });
+    }, 200);
+  });
+});
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
