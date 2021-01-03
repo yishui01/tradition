@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Post;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
@@ -74,16 +75,36 @@ class PostsController extends Controller
         return redirect()->route('posts.index')->with('message', 'Deleted successfully.');
     }
 
+    /**
+     * 搜索方法
+     * @param Request $request
+     * @return array
+     */
     public function search(Request $request)
     {
+        /** @var  $q */
         $q = $request->get('q');
-        $pageSize = 10;
-        if ($q) {
-            $res = Post::search($q)->take($pageSize)->get();
-        } else {
-            $res = Post::take($pageSize)->get();
+        $pageSize = 100;
+        if (empty($q)) {
+            $q = "*";
         }
-        return $res;
+        $res = Post::search($q)->select(["title", "slug", "excerpt", "user_id","reply_count"])->take($pageSize)
+            ->orderBy("reply_count","desc")->get();
+        $res->loadMissing("user");
+        $arr = [];
+        foreach ($res as $v) {
+            /** @var Model $v */
+            $v['avatar'] = $v['user']['avatar'];
+            $v['url'] = $v->link();
+            unset($v['user'], $v['id']);
+            $arr[] = $v;
+        }
+        return $arr;
+    }
+
+    public function searchList(Request $request)
+    {
+        return view('posts.searchList', compact('post', 'categories'));
     }
 
 }
