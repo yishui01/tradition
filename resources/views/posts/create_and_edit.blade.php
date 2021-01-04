@@ -45,7 +45,9 @@
                                     </div>
                                     <div class="form-group">
                                         <script id="container" name="content"
-                                                type="text/plain"></script>
+                                                type="text/plain">
+                                            {!! old('content', $post->content ) !!}
+                                        </script>
                                     </div>
                                     <div class="well well-sm">
                                         <button type="submit" class="btn btn-primary"><i class="far fa-save mr-2"
@@ -61,7 +63,6 @@
     <script type="text/javascript">
         var ue = UE.getEditor('container');
         ue.ready(function () {
-            ue.setContent('{!! old('content', $post->content ) !!}');
             ue.execCommand('serverparam', '_token', '{{ csrf_token() }}'); // 设置 CSRF token.
         });
     </script>
