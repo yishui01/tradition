@@ -8,6 +8,7 @@ $(function () {
     })
     $(".searchInput").blur(function (v) {
         $(this).parent().removeClass("focus")
+        $(".results").fadeOut("slow");
     })
     $(".searchInput").on("input", function (v) {
         if (searchTimer) {
