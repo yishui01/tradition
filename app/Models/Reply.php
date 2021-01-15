@@ -15,7 +15,12 @@ class Reply extends BaseMode
 
     public function post()
     {
-        return $this->belongsTo(Post::class)->withDefault();
+        return $this->belongsTo(Post::class)->withDefault(function(){
+            return new Post([
+                'id'=>1,
+                'slug'=>'1'
+            ]);
+        });
     }
 
     public function user()

@@ -3,10 +3,11 @@
     <ul class="list-group mt-4 border-0">
         @foreach ($replies as $reply)
             <li class="list-group-item pl-2 pr-2 border-right-0 border-left-0 @if($loop->first) border-top-0 @endif">
-                <a href="{{ $reply->post->link(['#reply' . $reply->id]) }}">
-                    {{ $reply->post->title }}
-                </a>
-
+                @if($reply->post->id)
+                    <a href="{{ $reply->post->link(['#reply' . $reply->id]) }}">
+                        {{ $reply->post->title }}
+                    </a>
+                @endif
                 <div class="reply-content text-secondary mt-2 mb-2">
                     {!! $reply->content !!}
                 </div>
