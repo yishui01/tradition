@@ -10,7 +10,12 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
-            <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav mr-auto"  <?php if(in_array(route_class(),
+                [
+                    'posts-create',
+                    'posts-edit',
+                ]))
+            { echo 'style="position:relative;top:7px;"';} ?> >
                 <li class="nav-item {{ checkQuery('cate') }}">
                     <a class="nav-link" href="{{ route('posts.index') }}">话题</a>
                 </li>
