@@ -21,7 +21,7 @@
 
                     <small class="media-body meta text-secondary">
 
-                        <a class="text-secondary" href="{{ route('categories.show', $post->category_id) }}"
+                        <a class="text-secondary" href="{{ $post->link(["cate"=>$post->category_id]) }}"
                            title="{{ $post->category->title }}">
                             <i class="far fa-folder"></i>
                             {{ $post->category->title }}
