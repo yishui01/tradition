@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\Traits\ActiveUserHelper;
+use App\Models\Traits\LastActivedAtHelper;
 use Illuminate\Contracts\Auth\MustVerifyEmail as MustVerifyEmailContract;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -11,7 +13,7 @@ use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable implements MustVerifyEmailContract
 {
-    use HasFactory, MustVerifyEmailTrait, Notifiable {
+    use ActiveUserHelper, LastActivedAtHelper, HasFactory, MustVerifyEmailTrait, Notifiable {
         notify as protected laravelNotify;
     }
 
@@ -24,7 +26,7 @@ class User extends Authenticatable implements MustVerifyEmailContract
     public static function boot()
     {
         parent::boot();
-        self::saving(BaseMode::savingCallBack());
+        self::saving(BaseMode::_savingCallBack());
     }
 
     protected $fillable = [

@@ -15,15 +15,15 @@ class BaseMode extends EloquentModel
     public static function boot()
     {
         parent::boot();
-        self::saving(static::savingCallBack());
-        self::saved(static::savedCallback());
+        self::saving(static::_savingCallBack());
+        self::saved(static::_savedCallback());
     }
 
     /**
      * 模型保存前回调
      * @return \Closure
      */
-    public static function savingCallBack()
+    public static function _savingCallBack()
     {
         /** @var  $model Model */
         return function ($model) {
@@ -41,14 +41,20 @@ class BaseMode extends EloquentModel
                     unlink($file);
                 }
             };
+
+            if (method_exists(get_called_class(), 'savingCallBack')) {
+                static::savingCallBack()($model);
+            }
         };
     }
 
-    public static function savedCallback()
+    public static function _savedCallback()
     {
         /** @var  $model Model */
         return function ($model) {
-
+            if (method_exists(get_called_class(), 'savedCallback')) {
+                static::savedCallBack()($model);
+            }
         };
     }
 

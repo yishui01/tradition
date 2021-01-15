@@ -27,7 +27,6 @@ class Post extends BaseMode
             if (!$model->excerpt) {
                 $model->excerpt = make_excerpt($model->content);
             }
-            parent::savingCallBack()($model);
         };
     }
 
@@ -37,7 +36,6 @@ class Post extends BaseMode
             if (!$model->slug) {
                 dispatch(new TranslateSlug($model));
             }
-            parent::savedCallback()($model);
         };
     }
 

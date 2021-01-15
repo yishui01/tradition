@@ -3,7 +3,11 @@
 
 function route_class()
 {
-    return str_replace('.', '-', \Illuminate\Support\Facades\Route::currentRouteName());
+    $name = str_replace('.', '-', \Illuminate\Support\Facades\Route::currentRouteName());
+    if ($name == 'root') {
+        return "posts-index";
+    }
+    return $name;
 }
 
 function setActive($routerName, $activeId = 0)

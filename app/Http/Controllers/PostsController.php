@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Link;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
@@ -18,7 +20,7 @@ class PostsController extends Controller
         $this->middleware('auth', ['except' => ['index', 'show', 'search']]);
     }
 
-    public function index(Request $request)
+    public function index(Request $request, User $user, Link $link)
     {
         /** @var Model $posts */
         $posts = Post::withOrder($request->order)->with("user", "category");
@@ -26,7 +28,9 @@ class PostsController extends Controller
             $posts = $posts->where('category_id', $request->cate);
         }
         $posts = $posts->paginate(15);
-        return view('posts.index', compact('posts'));
+        $activeUsers = $user->getActiveUsers();
+        $links = $link->getAllCached();
+        return view('posts.index', compact('posts', 'activeUsers', 'links'));
     }
 
     public function show(Post $post, Request $request)
@@ -88,8 +92,8 @@ class PostsController extends Controller
         if (empty($q)) {
             $q = "*";
         }
-        $res = Post::search($q)->select(["title", "slug", "excerpt", "user_id","reply_count"])->take($pageSize)
-            ->orderBy("reply_count","desc")->get();
+        $res = Post::search($q)->select(["title", "slug", "excerpt", "user_id", "reply_count"])->take($pageSize)
+            ->orderBy("reply_count", "desc")->get();
         $res->loadMissing("user");
         $arr = [];
         foreach ($res as $v) {
