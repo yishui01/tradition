@@ -23,17 +23,13 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection order
      * @property Grid\Column|Collection icon
      * @property Grid\Column|Collection uri
-     * @property Grid\Column|Collection user_id
-     * @property Grid\Column|Collection path
-     * @property Grid\Column|Collection method
-     * @property Grid\Column|Collection ip
-     * @property Grid\Column|Collection input
      * @property Grid\Column|Collection permission_id
      * @property Grid\Column|Collection menu_id
      * @property Grid\Column|Collection slug
      * @property Grid\Column|Collection http_method
      * @property Grid\Column|Collection http_path
      * @property Grid\Column|Collection role_id
+     * @property Grid\Column|Collection user_id
      * @property Grid\Column|Collection value
      * @property Grid\Column|Collection username
      * @property Grid\Column|Collection password
@@ -46,6 +42,12 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection payload
      * @property Grid\Column|Collection exception
      * @property Grid\Column|Collection failed_at
+     * @property Grid\Column|Collection img
+     * @property Grid\Column|Collection link
+     * @property Grid\Column|Collection notifiable_type
+     * @property Grid\Column|Collection notifiable_id
+     * @property Grid\Column|Collection data
+     * @property Grid\Column|Collection read_at
      * @property Grid\Column|Collection email
      * @property Grid\Column|Collection token
      * @property Grid\Column|Collection url
@@ -58,10 +60,9 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection nice_count
      * @property Grid\Column|Collection last_reply_user_id
      * @property Grid\Column|Collection excerpt
-     * @property Grid\Column|Collection m1
-     * @property Grid\Column|Collection n1
-     * @property Grid\Column|Collection m2
-     * @property Grid\Column|Collection n2
+     * @property Grid\Column|Collection post_id
+     * @property Grid\Column|Collection path
+     * @property Grid\Column|Collection deleted_at
      * @property Grid\Column|Collection email_verified_at
      * @property Grid\Column|Collection phone
      * @property Grid\Column|Collection click
@@ -72,6 +73,7 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection last_actived_at
      * @property Grid\Column|Collection fans_count
      * @property Grid\Column|Collection follow_count
+     * @property Grid\Column|Collection notification_count
      *
      * @method Grid\Column|Collection id(string $label = null)
      * @method Grid\Column|Collection name(string $label = null)
@@ -85,17 +87,13 @@ namespace Dcat\Admin {
      * @method Grid\Column|Collection order(string $label = null)
      * @method Grid\Column|Collection icon(string $label = null)
      * @method Grid\Column|Collection uri(string $label = null)
-     * @method Grid\Column|Collection user_id(string $label = null)
-     * @method Grid\Column|Collection path(string $label = null)
-     * @method Grid\Column|Collection method(string $label = null)
-     * @method Grid\Column|Collection ip(string $label = null)
-     * @method Grid\Column|Collection input(string $label = null)
      * @method Grid\Column|Collection permission_id(string $label = null)
      * @method Grid\Column|Collection menu_id(string $label = null)
      * @method Grid\Column|Collection slug(string $label = null)
      * @method Grid\Column|Collection http_method(string $label = null)
      * @method Grid\Column|Collection http_path(string $label = null)
      * @method Grid\Column|Collection role_id(string $label = null)
+     * @method Grid\Column|Collection user_id(string $label = null)
      * @method Grid\Column|Collection value(string $label = null)
      * @method Grid\Column|Collection username(string $label = null)
      * @method Grid\Column|Collection password(string $label = null)
@@ -108,6 +106,12 @@ namespace Dcat\Admin {
      * @method Grid\Column|Collection payload(string $label = null)
      * @method Grid\Column|Collection exception(string $label = null)
      * @method Grid\Column|Collection failed_at(string $label = null)
+     * @method Grid\Column|Collection img(string $label = null)
+     * @method Grid\Column|Collection link(string $label = null)
+     * @method Grid\Column|Collection notifiable_type(string $label = null)
+     * @method Grid\Column|Collection notifiable_id(string $label = null)
+     * @method Grid\Column|Collection data(string $label = null)
+     * @method Grid\Column|Collection read_at(string $label = null)
      * @method Grid\Column|Collection email(string $label = null)
      * @method Grid\Column|Collection token(string $label = null)
      * @method Grid\Column|Collection url(string $label = null)
@@ -120,10 +124,9 @@ namespace Dcat\Admin {
      * @method Grid\Column|Collection nice_count(string $label = null)
      * @method Grid\Column|Collection last_reply_user_id(string $label = null)
      * @method Grid\Column|Collection excerpt(string $label = null)
-     * @method Grid\Column|Collection m1(string $label = null)
-     * @method Grid\Column|Collection n1(string $label = null)
-     * @method Grid\Column|Collection m2(string $label = null)
-     * @method Grid\Column|Collection n2(string $label = null)
+     * @method Grid\Column|Collection post_id(string $label = null)
+     * @method Grid\Column|Collection path(string $label = null)
+     * @method Grid\Column|Collection deleted_at(string $label = null)
      * @method Grid\Column|Collection email_verified_at(string $label = null)
      * @method Grid\Column|Collection phone(string $label = null)
      * @method Grid\Column|Collection click(string $label = null)
@@ -134,6 +137,7 @@ namespace Dcat\Admin {
      * @method Grid\Column|Collection last_actived_at(string $label = null)
      * @method Grid\Column|Collection fans_count(string $label = null)
      * @method Grid\Column|Collection follow_count(string $label = null)
+     * @method Grid\Column|Collection notification_count(string $label = null)
      */
     class Grid {}
 
@@ -152,17 +156,13 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection order
      * @property Show\Field|Collection icon
      * @property Show\Field|Collection uri
-     * @property Show\Field|Collection user_id
-     * @property Show\Field|Collection path
-     * @property Show\Field|Collection method
-     * @property Show\Field|Collection ip
-     * @property Show\Field|Collection input
      * @property Show\Field|Collection permission_id
      * @property Show\Field|Collection menu_id
      * @property Show\Field|Collection slug
      * @property Show\Field|Collection http_method
      * @property Show\Field|Collection http_path
      * @property Show\Field|Collection role_id
+     * @property Show\Field|Collection user_id
      * @property Show\Field|Collection value
      * @property Show\Field|Collection username
      * @property Show\Field|Collection password
@@ -175,6 +175,12 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection payload
      * @property Show\Field|Collection exception
      * @property Show\Field|Collection failed_at
+     * @property Show\Field|Collection img
+     * @property Show\Field|Collection link
+     * @property Show\Field|Collection notifiable_type
+     * @property Show\Field|Collection notifiable_id
+     * @property Show\Field|Collection data
+     * @property Show\Field|Collection read_at
      * @property Show\Field|Collection email
      * @property Show\Field|Collection token
      * @property Show\Field|Collection url
@@ -187,10 +193,9 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection nice_count
      * @property Show\Field|Collection last_reply_user_id
      * @property Show\Field|Collection excerpt
-     * @property Show\Field|Collection m1
-     * @property Show\Field|Collection n1
-     * @property Show\Field|Collection m2
-     * @property Show\Field|Collection n2
+     * @property Show\Field|Collection post_id
+     * @property Show\Field|Collection path
+     * @property Show\Field|Collection deleted_at
      * @property Show\Field|Collection email_verified_at
      * @property Show\Field|Collection phone
      * @property Show\Field|Collection click
@@ -201,6 +206,7 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection last_actived_at
      * @property Show\Field|Collection fans_count
      * @property Show\Field|Collection follow_count
+     * @property Show\Field|Collection notification_count
      *
      * @method Show\Field|Collection id(string $label = null)
      * @method Show\Field|Collection name(string $label = null)
@@ -214,17 +220,13 @@ namespace Dcat\Admin {
      * @method Show\Field|Collection order(string $label = null)
      * @method Show\Field|Collection icon(string $label = null)
      * @method Show\Field|Collection uri(string $label = null)
-     * @method Show\Field|Collection user_id(string $label = null)
-     * @method Show\Field|Collection path(string $label = null)
-     * @method Show\Field|Collection method(string $label = null)
-     * @method Show\Field|Collection ip(string $label = null)
-     * @method Show\Field|Collection input(string $label = null)
      * @method Show\Field|Collection permission_id(string $label = null)
      * @method Show\Field|Collection menu_id(string $label = null)
      * @method Show\Field|Collection slug(string $label = null)
      * @method Show\Field|Collection http_method(string $label = null)
      * @method Show\Field|Collection http_path(string $label = null)
      * @method Show\Field|Collection role_id(string $label = null)
+     * @method Show\Field|Collection user_id(string $label = null)
      * @method Show\Field|Collection value(string $label = null)
      * @method Show\Field|Collection username(string $label = null)
      * @method Show\Field|Collection password(string $label = null)
@@ -237,6 +239,12 @@ namespace Dcat\Admin {
      * @method Show\Field|Collection payload(string $label = null)
      * @method Show\Field|Collection exception(string $label = null)
      * @method Show\Field|Collection failed_at(string $label = null)
+     * @method Show\Field|Collection img(string $label = null)
+     * @method Show\Field|Collection link(string $label = null)
+     * @method Show\Field|Collection notifiable_type(string $label = null)
+     * @method Show\Field|Collection notifiable_id(string $label = null)
+     * @method Show\Field|Collection data(string $label = null)
+     * @method Show\Field|Collection read_at(string $label = null)
      * @method Show\Field|Collection email(string $label = null)
      * @method Show\Field|Collection token(string $label = null)
      * @method Show\Field|Collection url(string $label = null)
@@ -249,10 +257,9 @@ namespace Dcat\Admin {
      * @method Show\Field|Collection nice_count(string $label = null)
      * @method Show\Field|Collection last_reply_user_id(string $label = null)
      * @method Show\Field|Collection excerpt(string $label = null)
-     * @method Show\Field|Collection m1(string $label = null)
-     * @method Show\Field|Collection n1(string $label = null)
-     * @method Show\Field|Collection m2(string $label = null)
-     * @method Show\Field|Collection n2(string $label = null)
+     * @method Show\Field|Collection post_id(string $label = null)
+     * @method Show\Field|Collection path(string $label = null)
+     * @method Show\Field|Collection deleted_at(string $label = null)
      * @method Show\Field|Collection email_verified_at(string $label = null)
      * @method Show\Field|Collection phone(string $label = null)
      * @method Show\Field|Collection click(string $label = null)
@@ -263,6 +270,7 @@ namespace Dcat\Admin {
      * @method Show\Field|Collection last_actived_at(string $label = null)
      * @method Show\Field|Collection fans_count(string $label = null)
      * @method Show\Field|Collection follow_count(string $label = null)
+     * @method Show\Field|Collection notification_count(string $label = null)
      */
     class Show {}
 
