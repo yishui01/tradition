@@ -22,7 +22,8 @@ class DeployController extends Controller
 
         $cmds = array(
             "cd $target ",
-            "git reset --hard origin/master && git clean -f ",
+            "git fetch",
+            "git reset --hard origin/master && git clean -f",
             "git pull",
             "chown -R {$wwwUser}:{$wwwGroup} $target/",
         );
