@@ -85,7 +85,7 @@
         color: #fff;
         background-color: rgba(0, 0, 0, 0.3);
         text-align: center !important;
-        background: url(/vendor/dcat-admin/images/pages/login/bg.jpg) center;
+        background: url(https://file.wuxxin.com/adminbg.jpg) center;
         background-size: cover;
     }
     .login-description {

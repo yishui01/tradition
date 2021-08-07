@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 // 已经在 RouteServiceProvider 中注册默认namespace为 \App\Http\Controllers
 Route::get('/search', "PostsController@search");
 Route::get('/', 'PostsController@index')->name('root');
+Route::get('/deploy', 'DeployController@index');
 
 // vendor/laravel/ui/src/AuthRouteMethods.php
 Auth::routes(["verify" => true]); //不加verify不会注册 email/verify等路由

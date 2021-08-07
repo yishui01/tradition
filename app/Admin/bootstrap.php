@@ -24,3 +24,5 @@ use Dcat\Admin\Show;
  * Admin::js('/packages/prettydocs/js/main.js');
  *
  */
+// 追加菜单
+Admin::menu()->add(include __DIR__.'/menu.php', 0);

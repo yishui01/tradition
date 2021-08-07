@@ -2,13 +2,27 @@
     <div class="container">
         <!-- Branding Images -->
         <a class="navbar-brand " href="{{ url('/') }}">
-            中华传统文化
+            我看看不到博客
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="d-lg-none" style="margin-top:10px;">
+                <form class="ui fluid category item secondary hide-on-991 searchInputDiv" action=""
+                      method="GET">
+                    <div class="ui icon input">
+                        <input class="searchInput" style="border-radius: 3px;" name="q" type="text" placeholder="搜索" value=""
+                               autocomplete="off">
+                        <i class="fa fa-search icon"></i>
+                    </div>
+                    <div class="results transition visible">
+                    </div>
+                </form>
+            </div>
+
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto"  <?php if(in_array(route_class(),
                 [
@@ -16,6 +30,7 @@
                     'posts-edit',
                 ]))
             { echo 'style="position:relative;top:7px;"';} ?> >
+
                 <li class="nav-item {{ checkQuery('cate') }}">
                     <a class="nav-link" href="{{ route('posts.index') }}">话题</a>
                 </li>
@@ -27,7 +42,7 @@
                         </a>
                     </li>
                 @endforeach
-                <li class="nav-item">
+                <li class="nav-item d-none d-lg-block">
                     <form class="ui fluid category search item secondary hide-on-991 searchInputDiv" action=""
                           method="GET">
                         <div class="ui icon input">

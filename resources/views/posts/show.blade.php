@@ -7,7 +7,7 @@
 
     <div class="row">
 
-        <div class="col-lg-3 col-md-3 hidden-sm hidden-xs author-info">
+        <div class="col-lg-3 col-md-3 d-none d-md-block author-info">
             <div class="card ">
                 <div class="card-body">
                     <div class="text-center">
