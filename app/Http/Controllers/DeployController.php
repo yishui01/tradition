@@ -11,10 +11,15 @@ class DeployController extends Controller
         $wwwUser = env('DEPLOY_USER', '');
         $wwwGroup = env('DEPLOY_GROUP', '');
 
-        $json = json_decode(file_get_contents('php://input'), true);
-        if (empty($json['token']) || $json['token'] !== $token) {
+        $signature = $_SERVER['HTTP_X_HUB_SIGNATURE'];
+        if (!$signature) {
+            exit('no HTTP_X_HUB_SIGNATURE');
+        }
+        $hash = "sha1=" . hash_hmac('sha1', file_get_contents("php://input"), $token);
+        if (strcmp($signature, $hash) !== 0) {
             exit('error request');
         }
+
         $cmds = array(
             "cd $target ",
             "git reset --hard origin/master && git clean -f ",
