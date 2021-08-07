@@ -22,7 +22,7 @@ class PostController extends AdminController
             $grid->column('url');
             $grid->column('author');
             $grid->column('title');
-            $grid->column('content');
+            //$grid->column('content');
             $grid->column('post_date');
             $grid->column('user_id');
             $grid->column('category_id');
@@ -35,10 +35,10 @@ class PostController extends AdminController
             $grid->column('slug');
             $grid->column('created_at');
             $grid->column('updated_at')->sortable();
-        
+
             $grid->filter(function (Grid\Filter $filter) {
                 $filter->equal('id');
-        
+
             });
         });
     }
@@ -85,8 +85,8 @@ class PostController extends AdminController
             $form->text('url');
             $form->text('author');
             $form->text('title');
-            $form->text('content');
-            $form->text('post_date');
+            $form->editor('content');
+            $form->date('post_date');
             $form->text('user_id');
             $form->text('category_id');
             $form->text('reply_count');
@@ -96,7 +96,7 @@ class PostController extends AdminController
             $form->text('order');
             $form->text('excerpt');
             $form->text('slug');
-        
+
             $form->display('created_at');
             $form->display('updated_at');
         });

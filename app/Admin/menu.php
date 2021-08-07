@@ -12,7 +12,7 @@ return [
         'id'        => 'reply',
         'title'     => '评论管理',
         'icon'      => 'fa-cubes',
-        'uri'       => 'post',
+        'uri'       => 'reply',
         'parent_id' => 0,
     ],
     [

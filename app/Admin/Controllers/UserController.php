@@ -21,27 +21,27 @@ class UserController extends AdminController
             $grid->column('id')->sortable();
             $grid->column('name');
             $grid->column('email');
-            $grid->column('email_verified_at');
-            $grid->column('password');
-            $grid->column('remember_token');
+            //$grid->column('email_verified_at');
+//            $grid->column('password');
+//            $grid->column('remember_token');
             $grid->column('phone');
-            $grid->column('avatar');
+            $grid->column('avatar')->image('', 50, 50);
             $grid->column('introduction');
             $grid->column('click');
-            $grid->column('wx_openid');
-            $grid->column('wx_pc_openid');
-            $grid->column('wx_union_id');
-            $grid->column('wx_info');
+//            $grid->column('wx_openid');
+//            $grid->column('wx_pc_openid');
+//            $grid->column('wx_union_id');
+//            $grid->column('wx_info');
             $grid->column('last_actived_at');
             $grid->column('fans_count');
             $grid->column('follow_count');
             $grid->column('notification_count');
             $grid->column('created_at');
             $grid->column('updated_at')->sortable();
-        
+
             $grid->filter(function (Grid\Filter $filter) {
                 $filter->equal('id');
-        
+
             });
         });
     }
@@ -94,7 +94,7 @@ class UserController extends AdminController
             $form->text('password');
             $form->text('remember_token');
             $form->text('phone');
-            $form->text('avatar');
+            $form->image('avatar');
             $form->text('introduction');
             $form->text('click');
             $form->text('wx_openid');
@@ -105,7 +105,7 @@ class UserController extends AdminController
             $form->text('fans_count');
             $form->text('follow_count');
             $form->text('notification_count');
-        
+
             $form->display('created_at');
             $form->display('updated_at');
         });
