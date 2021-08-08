@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+
 class DeployController extends Controller
 {
     public function index()
     {
+
         $target = env('DEPLOY_WEB_ROOT', ''); // 服务器上 web 目录
         $token = env('DEPLOY_TOKEN', '');
         $wwwUser = env('DEPLOY_USER', '');
