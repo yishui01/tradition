@@ -70,7 +70,7 @@
             <div class="card post-reply mt-4">
                 <div class="card-body">
                     @includeWhen(Auth::check(),'posts._reply_box', ['post' => $post])
-                    @include('posts._reply_list', ['replies' => $post->reply()->with('user')->get()])
+                    @include('posts._reply_list', ['replies' => $post->reply()->orderBy('created_at','desc')->with('user')->get()])
                 </div>
             </div>
 

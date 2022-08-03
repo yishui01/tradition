@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "29af80da46f04c8f42f6f0afa27ec796",
+    "content-hash": "c67203a18aeb371e2dfecc3a416bc720",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -304,6 +304,64 @@
                 "laravel admin"
             ],
             "time": "2020-10-29T14:14:17+00:00"
+        },
+        {
+            "name": "dcat/laravel-log-viewer",
+            "version": "0.1.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jqhph/laravel-log-viewer.git",
+                "reference": "313a1c5c8e154980c85df2e1fcea86bc11ff70dc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jqhph/laravel-log-viewer/zipball/313a1c5c8e154980c85df2e1fcea86bc11ff70dc",
+                "reference": "313a1c5c8e154980c85df2e1fcea86bc11ff70dc",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">=7.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Dcat\\LogViewer\\DcatLogViewerServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Dcat\\LogViewer\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "jqh",
+                    "email": "841324345@qq.com"
+                }
+            ],
+            "description": "Laravel Log Viewer",
+            "homepage": "https://github.com/jqhph/laravel-log-viewer",
+            "keywords": [
+                "laravel",
+                "log viewer"
+            ],
+            "support": {
+                "issues": "https://github.com/jqhph/laravel-log-viewer/issues",
+                "source": "https://github.com/jqhph/laravel-log-viewer/tree/0.1.5"
+            },
+            "time": "2020-07-14T14:45:27+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",

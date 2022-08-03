@@ -4,7 +4,7 @@ namespace App\Models;
 
 use App\Jobs\TranslateSlug;
 use App\PostsIndexConfigurator;
-use App\Services\PostService;
+use Carbon\Carbon;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\DB;
 use ScoutElastic\Searchable;
@@ -27,15 +27,15 @@ class Post extends BaseMode
             if (!$model->excerpt) {
                 $model->excerpt = make_excerpt($model->content);
             }
+            $model->author = $model->user->name;
+            $model->post_date = Carbon::now();
         };
     }
 
     public static function savedCallback()
     {
         return function ($model) {
-            if (!$model->slug) {
-                dispatch(new TranslateSlug($model));
-            }
+            dispatch(new TranslateSlug($model));
         };
     }
 

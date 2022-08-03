@@ -17,5 +17,6 @@ Route::group([
     $router->resource('reply', 'ReplyController');
     $router->resource('post', 'PostController');
     $router->resource('user', 'UserController');
+    $router->resource('role', 'AdminRoleController');
 
 });

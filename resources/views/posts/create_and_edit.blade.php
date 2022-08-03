@@ -33,13 +33,11 @@
                                         <input class="form-control" type="text" name="title"
                                                value="{{ old('title', $post->title ) }}" placeholder="请填写标题" required/>
                                     </div>
-
                                     <div class="form-group">
                                         <select class="form-control" name="category_id" required>
                                             <option value="" hidden disabled selected>请选择分类</option>
                                             @foreach ($categories as $value)
-                                                <option
-                                                    value="{{ $value->id }}" {{$post->category_id == $value->id ? 'selected':''}}>{{ $value->title }}</option>
+                                                <option value="{{ $value->id }}" {{old('category_id',$post->category_id) == $value->id ? 'selected':''}}>{{ $value->title }}</option>
                                             @endforeach
                                         </select>
                                     </div>
