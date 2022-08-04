@@ -1,13 +1,13 @@
 require('./bootstrap');
 
-var targetBlank = true //是否开启a标签新窗口打开
+var targetPostBodyBlank = true //是否开启文章内容页a标签新窗口打开
 
 /*****开关a标签是否在新窗口页打开*******/
 function targetSwitch() {
-    if (targetBlank) {
-        $("a").attr('target', '_blank')
+    if (targetPostBodyBlank) {
+        $(".post-body a").attr('target', '_blank')
     } else {
-        $("a").attr('target', '_self')
+        $(".post-body a").attr('target', '_self')
     }
 }
 
