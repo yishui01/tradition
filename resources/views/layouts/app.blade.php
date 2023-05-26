@@ -12,7 +12,7 @@
     <title>{{ config('app.name', 'Tanner个人博客') }}</title>
 
     <!-- Styles -->
-    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+    <link href="{{ env('CUSTOM_APP_CSS') }}" rel="stylesheet">
 </head>
 <body>
 <div id="app" class="{{ route_class() }}-page">
