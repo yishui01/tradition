@@ -32,7 +32,7 @@
 </div>
 
 <!-- Scripts -->
-<script src="{{ mix('js/app.js') }}"></script>
+<script src="{{ env('CUSTOM_APP_JS') }}"></script>
 
 </div>
 
