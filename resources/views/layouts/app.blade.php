@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" id="viewport"
           content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"/>
-    <link rel="shortcut icon" href=" /favicon.ico">
+    <link rel="shortcut icon" href="{{ env('CUSTOM_APP_FAVICON') }}">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
